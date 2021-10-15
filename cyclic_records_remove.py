@@ -24,10 +24,10 @@ import os                       # nopep8
 import re                       # nopep8
 import shutil                   # nopep8
 from pathlib import Path        # nopep8
-from typing import Union        # nopep8
+from typing import Union, List  # nopep8
 
 
-def recursive_get_subdirs(target: Union[str, os.PathLike]) -> list[Path]:
+def recursive_get_subdirs(target: Union[str, os.PathLike]) -> List[Path]:
     """Получает все дочерние директории для выбранной директории"""
     subdirs = (Path(root).absolute() for root, _, _ in os.walk(Path(target)))
     subdirs = list(set(subdirs))
@@ -37,7 +37,7 @@ def recursive_get_subdirs(target: Union[str, os.PathLike]) -> list[Path]:
 def find_all_video_folders(
         target: Union[str, os.PathLike],
         regex_pattern: str,
-) -> list[Path]:
+) -> List[Path]:
     """Выбирает все папки, по определённому паттерну"""
     target = Path(target).absolute()
     dirs = recursive_get_subdirs(target)
