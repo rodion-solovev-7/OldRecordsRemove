@@ -82,7 +82,7 @@ def main():
         logger.error("Директория не найдена! Завершение")
         return
 
-    video_folder_regex = r".*\d+/\d{4}-\d{2}-\d{2}/\d+$"
+    video_folder_regex = str(workdir) + r"/\d+/\d{4}-\d{2}-\d{2}/\d+$"
     videos = find_all_video_folders(WORKDIR, video_folder_regex)
     videos.sort(
         reverse=True,
